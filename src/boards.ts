@@ -20,16 +20,22 @@ export class Boards {
   
   setPuzzles(puzzles: Puzzle[]) {
     this.puzzles = puzzles
-    this.redraw()
   }
   
   redraw() {
-    this.vnode = this.patch(this.vnode || this.element, this.render(this.puzzles));
+    this.render(this.puzzles);
   }
 
   render(puzzles: Puzzle[]) {
-    return h('div#chessground-examples', puzzles.map(p => p.render()));
+    document.write("<pre>")
+
+    puzzles.forEach(function (p) {
+      console.log(p.render())
+      document.write(p.render().replace(/\n/g, "\r\n"))
+      document.write("\n\n")
+    })
+    document.write("</pre>")
+    
   }
   
 }
-

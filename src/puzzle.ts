@@ -37,34 +37,26 @@ export class Puzzle {
   }
   
   render() {
-    
-    return h(this.pathFromStatus("section.blue.merida"), [
-      h("div.cg-board-wrap", {
-        hook: {
-          insert: this.runUnit,
-          postpatch: this.runUnit
-        }
-      }),
-      h(
-        "p",
-        h(
-          "a",
-          {
-            props: {
-              href: this.url(this.analysis),
-              target: "_blank"
-            }
-          },
-          this.analysis.judgment.name
-        )
-      )
-    ])
+    return this.url(this.analysis)
+    // return h("pre", this.url(this.analysis))
   }
 
   url(analysis) {
+
     const chess = new Chess(analysis.fen)
+    const turnNumber = parseInt(analysis.fen.match(/\d+$/)[0])
+    let variation = analysis.variation.split(" ")
+    variation.forEach(function (move) {
+      chess.move(move)
+    })
+    let pgn = chess.pgn()
+    const firstMove  = variation[0]
+    const toReplace = `${turnNumber}. ${firstMove}`
+  
     let color: Color = toColor(chess)
-    return `https://lichess.org/${analysis.id}/${color}#${analysis.halfMove - 1}`
+    const blunder = `${turnNumber}. ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ${analysis.move.san}) ${turnNumber}... `
+    pgn = pgn.replace(toReplace, blunder) + ' *'
+    return pgn
   }
 
   run(el) {
