@@ -73,12 +73,9 @@
         }
 
         function filter(puzzles) {
-            const filtered = puzzles
-                .filter(bundle.severity(document.getElementById('severity').value))
-                .filter(bundle.timecontrol(document.getElementById('timecontrol').value))
-                .filter(bundle.colour(document.getElementById('colour').value))
-                .filter(bundle.phase(document.getElementById('phase').value));
-            status("From " + all.length + " analysed games found " + puzzles.length + " suboptimal moves, filtered to " + filtered.length);
+            const filtered = puzzles.filter(bundle.severity('Blunder')).filter(bundle.colour('white'))
+
+            //status("From " + all.length + " analysed games found " + puzzles.length + " suboptimal moves, filtered to " + filtered.length);
             filtered.sort((a, b) => a.analysis.halfMove - b.analysis.halfMove);
             return filtered;
         }
@@ -93,7 +90,7 @@
         }
 
         function status(x) {
-            document.getElementById("log").innerHTML = x;
+            //document.getElementById("log").innerHTML = x;
         }
     </script>
 </body>

@@ -39,7 +39,6 @@ export class Puzzle {
   
   render() {
     return this.url(this.analysis, this.game)
-    // return h("pre", this.url(this.analysis))
   }
 
   url(analysis, game) {
