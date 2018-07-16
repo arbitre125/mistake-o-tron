@@ -14,24 +14,24 @@
     <div class="inputs">
         <a href="https://lichess.org/api">Lichess</a> player:
         <input type="text" id="player" name="player" value="tailuge" onkeydown="pressEnter(event)" /> Analysed games to fetch:
-        <input type="text" name="games" id="games" value="2" onkeydown="pressEnter(event)" /> Severity <select id="severity" onchange="recompute()">
+        <input type="text" name="games" id="games" value="2" onkeydown="pressEnter(event)" /> Severity <select id="severity">
     <option value="" selected="selected">Any</option>
      <option value="Inaccuracy">Inaccuracy</option>
      <option value="Mistake">Mistake</option>
      <option value="Blunder">Blunder</option>
     </select> Game Phase
-        <select id="phase" onchange="recompute()">
+        <select id="phase">
      <option value="" selected="selected">Any</option>
      <option value="Opening">Opening</option>
      <option value="Middlegame">Middlegame</option>
      <option value="Endgame">Endgame</option>
     </select> Colour
-        <select id="colour" onchange="recompute()">
+        <select id="colour">
      <option value="" selected="selected">Any</option>
      <option value="white">White</option>
      <option value="black">Black</option>
     </select> Time control:
-        <select id="timecontrol" onchange="recompute()">
+        <select id="timecontrol">
   	 <option value="" selected="selected">Any</option>
   	 <option value="classical">Classical</option>
   	 <option value="rapid">Rapid</option>

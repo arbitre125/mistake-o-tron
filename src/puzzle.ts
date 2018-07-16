@@ -3,19 +3,20 @@ import { Chessground } from "chessground"
 import { Color } from "chessground/types"
 import { toDests, toColor } from "./util"
 import { VNode } from "snabbdom/vnode"
-import { h } from "snabbdom"
 
 export class Puzzle {
   readonly analysis
   private readonly chess
   private readonly config
   private status
+  private game
   
-  constructor(analysis) {
+  constructor(analysis, game) {
     this.analysis = analysis
     this.chess = new Chess(this.analysis.fen)
     this.config = this.initialiseConfig()
     this.status = ''
+    this.game = game
   }
 
   initialiseConfig() {
@@ -37,23 +38,32 @@ export class Puzzle {
   }
   
   render() {
-    return this.url(this.analysis)
+    return this.url(this.analysis, this.game)
     // return h("pre", this.url(this.analysis))
   }
 
-  url(analysis) {
-
+  url(analysis, game) {
     const chess = new Chess(analysis.fen)
+    let color: Color = toColor(chess)
     const turnNumber = parseInt(analysis.fen.match(/\d+$/)[0])
     let variation = analysis.variation.split(" ")
     variation.forEach(function (move) {
       chess.move(move)
     })
+    chess.header('White', game.players.white.user.name)
+    chess.header('Black', game.players.black.user.name)
+    chess.header('WhiteElo', game.players.white.rating.toString())
+    chess.header('BlackElo', game.players.black.rating.toString())
+    chess.header('Event', `https://lichess.org/${analysis.id}/${color}#${analysis.halfMove - 1}`)
+    let createdDate = new Date(game.createdAt)
+    let createdDateString = `${createdDate.getFullYear()}.${createdDate.getMonth()+1}.${createdDate.getDate()}`
+    chess.header('Date', createdDateString)
+    
     let pgn = chess.pgn()
+    
     const firstMove  = variation[0]
     const toReplace = `${turnNumber}. ${firstMove}`
   
-    let color: Color = toColor(chess)
     const blunder = `${turnNumber}. ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ${analysis.move.san}) ${turnNumber}... `
     pgn = pgn.replace(toReplace, blunder) + ' *'
     return pgn

@@ -33,6 +33,6 @@ export class Analysis {
     return this.gameAnalysis.analysis = this.gameAnalysis.analysis
       .filter(x => x.judgment)
       .filter(x => x.move.color == playerColour)
-      .map(x => new Puzzle(x))
+      .map(x => new Puzzle(x, this.gameAnalysis))
   }
 }
