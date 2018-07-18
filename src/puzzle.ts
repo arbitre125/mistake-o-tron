@@ -32,7 +32,6 @@ export class Puzzle {
     chess.header('Date', createdDateString)
 
     let pgn = chess.pgn()
-
     const firstMove  = variation[0]
     const toReplace = `${turnNumber}. ${firstMove}`
 
