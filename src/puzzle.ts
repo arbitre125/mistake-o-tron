@@ -55,7 +55,7 @@ export class Puzzle {
               target: "_blank"
             }
           },
-          this.analysis.judgment.name
+          this.analysis.judgment.name + ' ' +this.analysis.eval
         )
       )
     ])
