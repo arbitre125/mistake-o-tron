@@ -13,7 +13,7 @@ export function colour(x:string) {
 export function severity(x:string) {
   return (p: Puzzle) => {
     if (x === '') return true
-    return p.analysis.judgment.name === x
+    return p.analysis.judgment.name === 'Blunder'
   }
 }
 

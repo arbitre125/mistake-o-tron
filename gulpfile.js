@@ -30,7 +30,6 @@ function bundle() {
     .on('error', onError)
     .pipe(source('main.js'))
     .pipe(buffer())
-    .pipe(uglify())
     .pipe(gulp.dest(destination));
 }
 

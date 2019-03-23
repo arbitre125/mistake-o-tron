@@ -14,8 +14,8 @@
     <div class="inputs">
         <a href="https://lichess.org/api">Lichess</a> player:
         <input type="text" id="player" name="player" value="tailuge" onkeydown="pressEnter(event)" /> Analysed games to fetch:
-        <input type="text" name="games" id="games" value="2" onkeydown="pressEnter(event)" /> Severity <select id="severity">
-    <option value="" selected="selected">Any</option>
+        <input type="text" name="games" id="games" value="10" onkeydown="pressEnter(event)" /> Severity <select id="severity">
+    <option value="" selected="selected">Blunder</option>
      <option value="Inaccuracy">Inaccuracy</option>
      <option value="Mistake">Mistake</option>
      <option value="Blunder">Blunder</option>
@@ -32,7 +32,7 @@
      <option value="black">Black</option>
     </select> Time control:
         <select id="timecontrol">
-  	 <option value="" selected="selected">Any</option>
+  	 <option value="" selected="selected">Rapid</option>
   	 <option value="classical">Classical</option>
   	 <option value="rapid">Rapid</option>
   	 <option value="blitz">Blitz</option>

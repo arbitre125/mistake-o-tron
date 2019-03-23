@@ -12,6 +12,7 @@
   "dependencies": {
     "chess.js": "^0.10",
     "chessground": "^7.3",
+    "natives": "^1.1.6",
     "oboe": "^2.1.4",
     "page": "^1.8.6",
     "snabbdom": "^0.7.1"
