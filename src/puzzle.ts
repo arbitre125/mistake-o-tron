@@ -33,10 +33,19 @@ export class Puzzle {
 
     let pgn = chess.pgn()
     const firstMove  = variation[0]
-    const toReplace = `${turnNumber}. ${firstMove}`
+    let toReplace = `${turnNumber}. ${firstMove}`
+    let blunder = `${turnNumber}. ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ${analysis.move.san}) ${turnNumber}... `
 
-    const blunder = `${turnNumber}. ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ${analysis.move.san}) ${turnNumber}... `
-    pgn = pgn.replace(toReplace, blunder) + ' *'
+    if (color == 'black') {
+      toReplace = `${turnNumber}. ... ${firstMove}`
+      blunder = `${turnNumber}. ... ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ... ${analysis.move.san}) `
+      pgn = pgn.replace(toReplace, blunder) + ' 1-0'
+    } else {
+      pgn = pgn.replace(toReplace, blunder) + ' 0-1'
+
+    }
+
+
     return pgn
   }
 
