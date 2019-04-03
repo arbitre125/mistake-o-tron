@@ -35,8 +35,12 @@ export class Puzzle {
     const firstMove  = variation[0]
     const toReplace = `${turnNumber}. ${firstMove}`
 
-    const blunder = `${turnNumber}. ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ${analysis.move.san}) ${turnNumber}... `
-    pgn = pgn.replace(toReplace, blunder) + ' *'
+    //This lines are to generate the correct move and the blunder in a variation. (for use in tactics android app)
+    //Comment the lines to get the blunder variation (for then using pgn-tactics-generator)
+    // const blunder = `${turnNumber}. ${firstMove} { blunder: ${analysis.eval || analysis.mate }} (${turnNumber}. ${analysis.move.san}) ${turnNumber}... `
+    // pgn = pgn.replace(toReplace, blunder)
+
+    pgn = pgn +' *'
     return pgn
   }
 
