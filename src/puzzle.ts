@@ -39,8 +39,6 @@ export class Puzzle {
   }
   
   render() {
-    console.log("this.analysis________",this.analysis)
-    console.log("this.game________",this.game)
     return h(this.pathFromStatus("section.blue.merida"), [
       h("div.cg-board-wrap", {
         hook: {
@@ -129,7 +127,6 @@ export class Puzzle {
   
   pgn() {
     let analysis = this.analysis
-    console.log("analysis________",analysis)
     let game = this.game
     const chess = new Chess(analysis.fen)
     let color: Color = toColor(chess)

@@ -94,11 +94,9 @@
           var pgnSection = document.getElementById('pgn-section');
           var study = '';
           puzzles.forEach(function (p) {
-            console.log("p________",p)
             study += p.pgn().replace(/\n/g, "\r\n")
             study += "\n\n" 
           })
-          console.log("study________",study)
           pgnSection.innerHTML = study
         }
 
