@@ -41,11 +41,14 @@
   	 <option value="unlimited">Unlimited</option>
   	 <option value="correspondence">Correspondence</option>
 		</select>
-        <input type="submit" id="Search" value="Fetch data" onclick="search()">
+    <input type="submit" id="Search" value="Fetch data" onclick="search()">
     </div>
 
     <pre class="inputs" id="log"></pre>
     <div id="chessground-examples"></div>
+    <input type="submit" value="Export Pgn" onclick="exportPgn()">
+
+    <pre id="pgn-section"></pre>
     <script src="dist/main.js"></script>
     <script>
         /* global bundle */
@@ -85,6 +88,18 @@
 
         function recompute() {
             boards.setPuzzles(filter(puzzles));
+        }
+
+        function exportPgn() {
+          var pgnSection = document.getElementById('pgn-section');
+          var study = '';
+          puzzles.forEach(function (p) {
+            console.log("p________",p)
+            study += p.pgn().replace(/\n/g, "\r\n")
+            study += "\n\n" 
+          })
+          console.log("study________",study)
+          pgnSection.innerHTML = study
         }
 
         function pressEnter(event) {

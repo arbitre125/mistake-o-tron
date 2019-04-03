@@ -7,6 +7,7 @@ export class Analysis {
 
   constructor(gameAnalysis) {
     this.gameAnalysis = gameAnalysis;
+    console.log("this.gameAnalysis________",this.gameAnalysis)
   }
   
   puzzles(player: string): Puzzle[] {
@@ -33,6 +34,6 @@ export class Analysis {
     return this.gameAnalysis.analysis = this.gameAnalysis.analysis
       .filter(x => x.judgment)
       .filter(x => x.move.color == playerColour)
-      .map(x => new Puzzle(x))
+      .map(x => new Puzzle(x, this.gameAnalysis))
   }
 }
