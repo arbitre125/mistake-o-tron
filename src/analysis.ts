@@ -8,7 +8,7 @@ export class Analysis {
   constructor(gameAnalysis) {
     this.gameAnalysis = gameAnalysis;
   }
-  
+
   puzzles(player: string): Puzzle[] {
     const chess = new Chess()
     var fens : any[] = []
@@ -31,7 +31,8 @@ export class Analysis {
     var whiteUser = this.gameAnalysis.players.white.user
     var playerColour: string = (whiteUser && (whiteUser.id == player)) ? 'w':'b'
     return this.gameAnalysis.analysis = this.gameAnalysis.analysis
-      .filter(x => x.judgment)
+      .filter((x,i)  => i>0 && this.gameAnalysis.analysis[i-1].eval < 300 && this.gameAnalysis.analysis[i-1].eval > -300)
+      .filter(x => x.judgment && x.judgment.name == "Blunder")
       .filter(x => x.move.color == playerColour)
       .map(x => new Puzzle(x, this.gameAnalysis))
   }

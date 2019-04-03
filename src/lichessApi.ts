@@ -10,8 +10,8 @@ export class LichessApi {
 
   games(user, items, itemCallback, completeCallback) {
 		var all: any[] = [];
-		const fixedQueryParams = "&perfType=ultraBullet,bullet,blitz,rapid,classical" +
-												     "&analysed=true&evals=true&moves=true&opening=true&color=white"
+		const fixedQueryParams = "&perfType=rapid,classical" +
+												     "&analysed=true&evals=true&moves=true&rated=true"
 		oboe({
 			method: "GET",
 			url: this.url + "/games/export/" + user + "?max=" + items + fixedQueryParams,
