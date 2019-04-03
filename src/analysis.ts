@@ -7,7 +7,6 @@ export class Analysis {
 
   constructor(gameAnalysis) {
     this.gameAnalysis = gameAnalysis;
-    console.log("this.gameAnalysis________",this.gameAnalysis)
   }
   
   puzzles(player: string): Puzzle[] {
@@ -27,6 +26,11 @@ export class Analysis {
        this.gameAnalysis.analysis[i].best = {from:best.substring(0, 2), to:best.substring(2, 4)}
        this.gameAnalysis.analysis[i].speed = this.gameAnalysis.speed
        this.gameAnalysis.analysis[i].id = this.gameAnalysis.id
+       if (i>0) {
+         this.gameAnalysis.analysis[i].prevEval = this.gameAnalysis.analysis[i-1].eval
+         this.gameAnalysis.analysis[i].absDiffEval = Math.abs(this.gameAnalysis.analysis[i].eval - this.gameAnalysis.analysis[i].prevEval);
+       }
+
       }
     })
     var whiteUser = this.gameAnalysis.players.white.user

@@ -17,7 +17,6 @@ export class LichessApi {
 			url: this.url + "/games/export/" + user + "?max=" + items + fixedQueryParams,
 			headers: { Accept: "application/x-ndjson" },
 		}).node("!", function(data) {
-      console.log("data________",data)
 			all.push(data);
 			itemCallback(data);
 		}).on("end", function({}) {
