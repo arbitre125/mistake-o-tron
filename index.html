@@ -12,8 +12,8 @@
 <body>
     <h2><a href="https://github.com/tailuge/mistake-o-tron">Mistake-o-tron</a></h2>
     <div class="inputs">
-        <a href="https://lichess.org/api">Lichess</a> player:
-        <input type="text" id="player" name="player" value="tailuge" onkeydown="pressEnter(event)" /> Analysed games to fetch:
+        <a href="https://lichess.org/api">Lichess</a> Joueur:
+        <input type="text" id="player" name="player" value="Barhoum" onkeydown="pressEnter(event)" /> Analysé les parties à récupérer:
         <input type="text" name="games" id="games" value="2" onkeydown="pressEnter(event)" /> Severity <select id="severity" onchange="recompute()">
     <option value="" selected="selected">toute</option>
      <option value="Inaccuracy">Imprécision</option>
@@ -21,20 +21,20 @@
      <option value="Blunder">Gaffe</option>
     </select> Game Phase
         <select id="phase" onchange="recompute()">
-     <option value="" selected="selected">Any</option>
-     <option value="Opening">Opening</option>
-     <option value="Middlegame">Middlegame</option>
-     <option value="Endgame">Endgame</option>
+     <option value="" selected="selected">Toute</option>
+     <option value="Opening">ouverture</option>
+     <option value="Middlegame">milieu</option>
+     <option value="Endgame">finale</option>
     </select> Colour
         <select id="colour" onchange="recompute()">
-     <option value="" selected="selected">Any</option>
-     <option value="white">White</option>
-     <option value="black">Black</option>
+     <option value="" selected="selected">Toute</option>
+     <option value="white">Blanc</option>
+     <option value="black">Noir</option>
     </select> Time control:
         <select id="timecontrol" onchange="recompute()">
-  	 <option value="" selected="selected">Any</option>
-  	 <option value="classical">Classical</option>
-  	 <option value="rapid">Rapid</option>
+  	 <option value="" selected="selected">Toute</option>
+  	 <option value="classical">Classique</option>
+  	 <option value="rapid">Rapide</option>
   	 <option value="blitz">Blitz</option>
   	 <option value="bullet">Bullet</option>
   	 <option value="ultraBullet">UltraBullet</option>
